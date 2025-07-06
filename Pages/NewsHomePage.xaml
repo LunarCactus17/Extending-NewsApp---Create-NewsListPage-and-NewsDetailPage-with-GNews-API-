@@ -9,7 +9,7 @@
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, *">
 
-            <!-- Categories Label -->
+            
             <Label Grid.Row="0"
                    Text="Categories"
                    FontSize="Title"
@@ -17,7 +17,7 @@
                    Margin="10,10,0,0"
                    TextColor="#333333" />
 
-            <!-- Categories CollectionView -->
+            
             <CollectionView Grid.Row="1"
                             x:Name="CvCategories"
                             HeightRequest="120"
@@ -52,7 +52,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <!-- Breaking News Label -->
+            
             <Label Grid.Row="2"
                    Text="Breaking News"
                    FontSize="Title"
@@ -60,7 +60,7 @@
                    Margin="10,10,0,0"
                    TextColor="#333333" />
 
-            <!-- Breaking News CollectionView -->
+            
             <CollectionView Grid.Row="3"
                             x:Name="CvNews"
                             SelectionMode="Single"
