@@ -5,7 +5,7 @@
              Title="News Details">
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="10">
-            <!-- Article Image -->
+            
             <Image Source="{Binding Image}"
                    Aspect="AspectFill"
                    HeightRequest="200"
@@ -21,20 +21,20 @@
                 </Image.Triggers>
             </Image>
 
-            <!-- Article Title -->
+            
             <Label Text="{Binding Title}"
                    FontSize="Large"
                    FontAttributes="Bold"
                    TextColor="#1A1A1A"
                    LineBreakMode="WordWrap" />
 
-            <!-- Article Content -->
+            
             <Label Text="{Binding Content}"
                    FontSize="Medium"
                    TextColor="#333333"
                    LineBreakMode="WordWrap" />
 
-            <!-- Source Name and Published Date (Optional, but good for details) -->
+            
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label Text="{Binding Source.Name}"
                        FontSize="Small"
