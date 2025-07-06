@@ -1,5 +1,5 @@
 ﻿using NewsApp.Pages;
-using Microsoft.Maui.Controls; // Ensure this is included for NavigationPage
+using Microsoft.Maui.Controls;
 
 namespace NewsApp
 {
