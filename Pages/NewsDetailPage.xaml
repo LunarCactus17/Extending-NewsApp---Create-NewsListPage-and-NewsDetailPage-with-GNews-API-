@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsApp.Pages.NewsDetailPage"
+             Title="News Details">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <!-- Article Image -->
+            <Image Source="{Binding Image}"
+                   Aspect="AspectFill"
+                   HeightRequest="200"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#F0F0F0">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Image}" Value="{x:Null}">
+                        <Setter Property="Source" Value="placeholder_image.png" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Image" Binding="{Binding Image}" Value="">
+                        <Setter Property="Source" Value="placeholder_image.png" />
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+
+            <!-- Article Title -->
+            <Label Text="{Binding Title}"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   TextColor="#1A1A1A"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Article Content -->
+            <Label Text="{Binding Content}"
+                   FontSize="Medium"
+                   TextColor="#333333"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Source Name and Published Date (Optional, but good for details) -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="{Binding Source.Name}"
+                       FontSize="Small"
+                       TextColor="#666666" />
+                <Label Text=" - "
+                       FontSize="Small"
+                       TextColor="#666666" />
+                <Label Text="{Binding PublishedAt, StringFormat='{0:MMM dd, yyyy}'}"
+                       FontSize="Small"
+                       TextColor="#666666" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

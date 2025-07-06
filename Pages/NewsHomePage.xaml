@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:NewsApp.Models"
+             xmlns:shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls"
+             x:Class="NewsApp.Pages.NewsHomePage"
+             Title="NewsApp">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto, *">
+
+            <!-- Categories Label -->
+            <Label Grid.Row="0"
+                   Text="Categories"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   Margin="10,10,0,0"
+                   TextColor="#333333" />
+
+            <!-- Categories CollectionView -->
+            <CollectionView Grid.Row="1"
+                            x:Name="CvCategories"
+                            HeightRequest="120"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCategorySelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Category">
+                        <Border Stroke="#E0E0E0"
+                                StrokeThickness="1"
+                                Padding="10"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 10"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <Image Source="{Binding ImageUrl}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="50"
+                                       WidthRequest="50" />
+                                <Label Text="{Binding Name}"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Bold"
+                                       TextColor="#555555" />
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Breaking News Label -->
+            <Label Grid.Row="2"
+                   Text="Breaking News"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   Margin="10,10,0,0"
+                   TextColor="#333333" />
+
+            <!-- Breaking News CollectionView -->
+            <CollectionView Grid.Row="3"
+                            x:Name="CvNews"
+                            SelectionMode="Single"
+                            SelectionChanged="OnBreakingNewsSelected">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Article">
+                        <Border Stroke="#E0E0E0"
+                                StrokeThickness="1"
+                                Padding="10"
+                                Margin="5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 10">
+                            <Grid ColumnDefinitions="100,*" RowDefinitions="Auto,Auto">
+                                <Image Grid.Column="0"
+                                       Source="{Binding Image}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="80"
+                                       WidthRequest="80"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Margin="0,0,10,0"
+                                       BackgroundColor="#F0F0F0">
+                                    <Image.Clip>
+                                        <shapes:RoundRectangleGeometry CornerRadius="5" Rect="0,0,100,80" />
+                                    </Image.Clip>
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Image}" Value="{x:Null}">
+                                            <Setter Property="Source" Value="placeholder_image.png" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Image}" Value="">
+                                            <Setter Property="Source" Value="placeholder_image.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="WordWrap"
+                                       MaxLines="3"
+                                       TextColor="#333333" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
